@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Molot : MonoBehaviour
 {
-    public float rotationSpeed = 30f;
+    [SerializeField] private float rotationSpeed = 30f;
     private float currentRotation = 30f;
     private bool rotateClockwise = true;
 

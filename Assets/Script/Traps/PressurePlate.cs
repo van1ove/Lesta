@@ -3,11 +3,11 @@ using UnityEngine;
 
 public class PressurePlate : MonoBehaviour
 {
-    private const float OrangeToRedDelay = 1f;
+    private const float OrangeToRedDelay = 1.5f;
     private const float RedToSourceDelay = 0.3f;
 
-    public float damage = 10f;
-    public float rechargeTime = 5f;
+    [SerializeField] private float damage = 10f;
+    [SerializeField] private float rechargeTime = 5f;
     private bool activated = false;
 
     private Material _mat;
@@ -37,7 +37,7 @@ public class PressurePlate : MonoBehaviour
     {
         activated = true;
         Color sourceColor = _mat.color;
-        _mat.color = Color.Lerp(sourceColor, Color.yellow, 1);
+        _mat.color = Color.yellow;
 
         yield return new WaitForSeconds(OrangeToRedDelay);
 

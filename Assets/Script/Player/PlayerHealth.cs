@@ -11,10 +11,10 @@ public class PlayerHealth : MonoBehaviour
             return;
 
         hp -= damage;
-        if(hp <= 0)
-        {
+
+        if (hp <= 0)
             GetComponent<PlayerInputController>().IsBlocked = true;
-        }
+        
         Debug.Log(hp);
     }
 }
