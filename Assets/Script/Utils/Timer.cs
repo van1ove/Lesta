@@ -10,10 +10,13 @@ namespace Script.Utils
         public bool IsStopped { get; private set; }
         public float CurrentTime { get; private set; }
 
+        private bool _isStarted;
+
         private void Start()
         {
             IsStopped = true;
             CurrentTime = 0f;
+            _isStarted = false;
         }
 
         private void Update()
@@ -21,10 +24,20 @@ namespace Script.Utils
             if (IsStopped)
                 return;
 
+            _isStarted = true;
+
             CurrentTime += Time.deltaTime;
         }
 
-        public void PauseTimer(bool pause = false) => IsStopped = pause;
+        public void PauseTimer(bool pause = false)
+        {
+            if (!_isStarted)
+                return;
+
+            IsStopped = pause;
+        }
+
+        public void UnlockTimer() => _isStarted = true;
 
         public void ShowTime()
         {

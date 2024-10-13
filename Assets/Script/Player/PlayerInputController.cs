@@ -41,19 +41,17 @@ namespace Script.Player
         private void Update()
         {
             _animatorController.UpdateAnimator(_moveInput.sqrMagnitude > 0);
-            
+            _physicsController.CheckCollision();
+
             if (_isBlocked)
                 return;
             
             ApplyGravity();
             MovePlayer();
-            
+
             if (_moveInput.sqrMagnitude == 0)
-            {
-                _physicsController.CheckCollision();
                 return;
-            }
-            
+
             RotatePlayer();
         }
 
@@ -68,7 +66,10 @@ namespace Script.Player
 
         public void Jump(InputAction.CallbackContext context)
         {
-            if (!context.started || !_characterController.isGrounded)
+            if (!context.started)
+                return;
+
+            if (!_characterController.isGrounded)
                 return;
 
             _verticalVelocity += jumpPower;

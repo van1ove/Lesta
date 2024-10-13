@@ -8,19 +8,15 @@ namespace Script.UI
     {
         [SerializeField] private GameObject winImage;
         [SerializeField] private GameObject loseImage;
-        [SerializeField] private TextMeshProUGUI timeTMP;
+        [SerializeField] private GameObject pauseImage;
+
         private void Start()
         {
             winImage.SetActive(false);
             loseImage.SetActive(false);
+            pauseImage.SetActive(false);
         }
 
-        public void ShowWinImage() => winImage.SetActive(true);
-
-        public void ShowLoseImage() => loseImage.SetActive(true);
-
         public void Restart() => SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        
-        
     }
 }

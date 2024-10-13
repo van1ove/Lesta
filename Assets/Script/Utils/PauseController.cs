@@ -20,11 +20,9 @@ namespace Script.Utils
             if (Time.timeScale < 0.01)
             {
                 onGameContinue?.Invoke();
-                ContinueTime();
             }
             else
             {
-                StopTime();
                 onGamePaused?.Invoke();
             }
         }

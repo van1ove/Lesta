@@ -1,11 +1,13 @@
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 namespace Script.Player
 {
     [RequireComponent(typeof(PlayerInputController))]
     public class PlayerHealth : MonoBehaviour
     {
+        [SerializeField] private Slider healthBar;
         public float hp = 100;
         public UnityEvent onDead;
 
@@ -15,6 +17,7 @@ namespace Script.Player
                 return;
 
             hp -= damage;
+            UpdateUI();
 
             if (hp <= 0)
                 Die();
@@ -23,5 +26,7 @@ namespace Script.Player
         }
 
         public void Die() => onDead?.Invoke();
+
+        public void UpdateUI() => healthBar.value = hp / 100;
     }
 }

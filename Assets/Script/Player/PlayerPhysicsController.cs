@@ -20,7 +20,7 @@ namespace Script.Player
             _bottom = transform.position + Vector3.up * 0.25f + Vector3.forward / 3;
             _top = _bottom + Vector3.up * (_characterController.height * transform.localScale.y);
         
-            for (int i = 0; i < 360; i += 18)
+            for (int i = 0; i < 360; i += 12)
             {
                 if (Physics.CapsuleCast(_bottom, _top, 0, new Vector3(Mathf.Cos(i), 0, Mathf.Sin(i)), 
                         out RaycastHit hit, _characterController.radius, 1 << LayerMaskIndexContainer.SpinningTrap))
