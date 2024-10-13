@@ -1,20 +1,27 @@
 using UnityEngine;
+using UnityEngine.Events;
 
-[RequireComponent(typeof(PlayerInputController))]
-public class PlayerHealth : MonoBehaviour
+namespace Script.Player
 {
-    public float hp = 100;
-
-    public void GetDamage(float damage)
+    [RequireComponent(typeof(PlayerInputController))]
+    public class PlayerHealth : MonoBehaviour
     {
-        if (hp < 0)
-            return;
+        public float hp = 100;
+        public UnityEvent onDead;
 
-        hp -= damage;
+        public void GetDamage(float damage)
+        {
+            if (hp < 0)
+                return;
 
-        if (hp <= 0)
-            GetComponent<PlayerInputController>().IsBlocked = true;
+            hp -= damage;
+
+            if (hp <= 0)
+                Die();
         
-        Debug.Log(hp);
+            Debug.Log(hp);
+        }
+
+        public void Die() => onDead?.Invoke();
     }
 }

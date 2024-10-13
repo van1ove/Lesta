@@ -1,12 +1,15 @@
 using UnityEngine;
 
-public class CameraFollow : MonoBehaviour
+namespace Script.Player
 {
-    [SerializeField] private Transform target; 
-    [SerializeField] private Vector3 offset;
-
-    void LateUpdate()
+    public class CameraFollow : MonoBehaviour
     {
-        transform.position = target.position + offset;
+        [SerializeField] private Transform target; 
+        [SerializeField] private Vector3 offset;
+
+        void LateUpdate()
+        {
+            transform.position = target.position + offset;
+        }
     }
 }
